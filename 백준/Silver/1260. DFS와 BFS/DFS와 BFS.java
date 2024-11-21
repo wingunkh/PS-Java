@@ -9,20 +9,21 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
 
-        StringTokenizer st1 = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(st1.nextToken());
-        m = Integer.parseInt(st1.nextToken());
-        v = Integer.parseInt(st1.nextToken());
+        st = new StringTokenizer(br.readLine());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+        v = Integer.parseInt(st.nextToken());
 
         for (int i = 0; i < n + 1; i++) {
             a.add(new ArrayList<>());
         }
 
         for (int i = 0; i < m; i++) {
-            StringTokenizer st2 = new StringTokenizer(br.readLine());
-            int start = Integer.parseInt(st2.nextToken());
-            int end = Integer.parseInt(st2.nextToken());
+            st = new StringTokenizer(br.readLine());
+            int start = Integer.parseInt(st.nextToken());
+            int end = Integer.parseInt(st.nextToken());
             a.get(start).add(end);
             a.get(end).add(start);
         }
@@ -44,7 +45,7 @@ public class Main {
 
     public static void Dfs(int v) {
         visited[v] = true;
-        sb.append(v).append(' ');
+        sb.append(v).append(" ");
 
         for (int next : a.get(v)) {
             if (!visited[next]) {
@@ -57,7 +58,7 @@ public class Main {
         ArrayDeque<Integer> q = new ArrayDeque<>();
         q.addLast(v);
         visited[v] = true;
-        sb.append(v).append(' ');
+        sb.append(v).append(" ");
 
         while (!q.isEmpty()) {
             int now = q.removeFirst();
@@ -66,7 +67,7 @@ public class Main {
                 if (!visited[next]) {
                     q.addLast(next);
                     visited[next] = true;
-                    sb.append(next).append(' ');
+                    sb.append(next).append(" ");
                 }
             }
         }
